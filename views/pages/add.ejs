@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+<h2>Tambah Buku Baru</h2>
+<form action="/buku/tambah" method="POST">
+    <p><label>Judul Buku:</label><br><input type="text" name="judul" required></p>
+    <p><label>Penulis:</label><br><input type="text" name="penulis" required></p>
+    <p><label>Deskripsi:</label><br><textarea name="deskripsi" rows="3"></textarea></p>
+    <p><label>Stok:</label><br><input type="number" name="stok" min="0" required></p>
+    <p>
+        <label>Kategori:</label><br>
+        <select name="kategori" required>
+            <option value="Fiksi">Fiksi</option>
+            <option value="Non-Fiksi">Non-Fiksi</option>
+            <option value="Sains">Sains</option>
+            <option value="Teknologi">Teknologi</option>
+        </select>
+    </p>
+    <p><label>Tanggal Terbit:</label><br><input type="date" name="tanggal_terbit" required></p>
+    <button type="submit" class="btn btn-add">Simpan</button>
+    <a href="/buku" class="btn" style="background:#6c757d; color:white;">Batal</a>
+</form>
+
+<%- include('../partials/footer') %>

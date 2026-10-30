@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<h2>Edit Data Buku</h2>
+<form action="/buku/edit/<%= buku.id %>" method="POST">
+    <p><label>Judul Buku:</label><br><input type="text" name="judul" value="<%= buku.judul %>" required></p>
+    <p><label>Penulis:</label><br><input type="text" name="penulis" value="<%= buku.penulis %>" required></p>
+    <p><label>Deskripsi:</label><br><textarea name="deskripsi" rows="3"><%= buku.deskripsi %></textarea></p>
+    <p><label>Stok:</label><br><input type="number" name="stok" value="<%= buku.stok %>" min="0" required></p>
+    <p>
+        <label>Kategori:</label><br>
+        <select name="kategori" required>
+            <% const options = ['Fiksi', 'Non-Fiksi', 'Sains', 'Teknologi']; %>
+            <% options.forEach(opt => { %>
+                <option value="<%= opt %>" <%= buku.kategori === opt ? 'selected' : '' %>><%= opt %></option>
+            <% }) %>
+        </select>
+    </p>
+    <p>
+        <label>Tanggal Terbit:</label><br>
+        <input type="date" name="tanggal_terbit" value="<%= new Date(buku.tanggal_terbit).toISOString().split('T')[0] %>" required>
+    </p>
+    <button type="submit" class="btn btn-edit">Update</button>
+    <a href="/buku" class="btn" style="background:#6c757d; color:white;">Batal</a>
+</form>
+
+<%- include('../partials/footer') %>
